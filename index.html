@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kreativ Kode</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=RalUbuntu+Condensedeway:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Raleway:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Roboto:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Tajawal:400,700,800&display=swap);
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font-family: 'Tajawal'; color: #1a1a1a;}
+      a {color:inherit;}
+      h1, h2, h3 {
+        font-weight: 800;
+        text-transform:uppercase;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+      .content {
+        display: inline-block;
+        padding: 30px 50px 20px 50px;
+        background-color: rgba(240,240,240);
+        box-shadow:rgba(0,0,0,0.2) 0px 0px 15px -1px;
+      }
+
+      .cover { position:relative; top: -100px; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+layout: true
+
+background-color: #f1f1f1
+class: center, middle
+background-size: cover
+
+---
+background-image: url(resources/axi.jpg)
+
+.content.cover[
+  # Kunst med kode
+  Intro til kreativ programmering
+]
+
+---
+
+## Hva?
+
+---
+background-image: url(resources/hedgehog.jpeg)
+
+.content[
+  ### Hva er kreativ programmering?
+]
+
+???
+- Skriver kode for å skape et utrykk heller enn å skape funksjonalitet.
+- Man prøver ikke å løse et problem, koden eksisterer i kraft av seg selv
+
+---
+background-image: url(resources/byrne2.jpg)
+
+.content[
+  ### Hva er generativ kunst?
+]
+
+???
+- Når du lar et autonomt system ta deler av beslutningene.
+- I vårt tilfelle bruker vi en RNG til å ta avgjørelser for oss.
+
+---
+
+## Hvordan?
+
+---
+### p5.js
+---
+### setup()
+---
+### draw()
+---
+### random()
+---
+### random() mange
+---
+
+
+## Hvorfor?
+
+---
+
+## Takk for meg!
+
+    </textarea>
+    <script src="remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
