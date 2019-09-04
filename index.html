@@ -3,10 +3,11 @@
   <head>
     <title>Kreativ Kode</title>
     <meta charset="utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.js"></script>
     <style>
       @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
       @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
-      @import url(https://fonts.googleapis.com/css?family=RalUbuntu+Condensedeway:400,700,400italic);
       @import url(https://fonts.googleapis.com/css?family=Raleway:400,700,400italic);
       @import url(https://fonts.googleapis.com/css?family=Roboto:400,700,400italic);
       @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
@@ -26,6 +27,20 @@
         padding: 30px 50px 20px 50px;
         background-color: rgba(240,240,240);
         box-shadow:rgba(0,0,0,0.2) 0px 0px 15px -1px;
+      }
+
+      .codeslide {color: #fff}
+      .sketch { display:inline-block; margin: 20px 0 0 30px;}
+      .sketch canvas { border-radius: 10px; }
+      .code {
+        display:inline-block;
+        text-align: left;
+        vertical-align: top;
+        min-height: 400px;
+        margin-top: 20px;
+        padding:20px;
+        border: 1px solid #fff;
+        border-radius: 10px;
       }
 
       .cover { position:relative; top: -100px; }
@@ -81,11 +96,181 @@ background-image: url(resources/byrne2.jpg)
 ---
 ### p5.js
 ---
-### setup()
+layout: true
+
+background-color: #2d2d2d
+class: center, middle, codeslide
+background-size: cover
+color: #fff
+
 ---
-### draw()
+## Setup
+
+.code[
+```javascript
+function setup() {
+  createCanvas(400,400);
+  background(0);
+}
+```]
+
+--
+name: setup
+<div class="sketch" id="ex_setup"></div>
+
 ---
-### random()
+## Draw
+
+.code[
+```javascript
+function setup() {
+  createCanvas(400,400);
+  background(0);
+  fill(255);
+}
+
+function draw() {
+  ellipse(200, 200, 30, 30);
+}
+```]
+
+--
+name: draw
+<div class="sketch" id="ex_draw"></div>
+
+---
+## Draw
+.code[
+```javascript
+let xpos = 0;
+
+function setup() {
+  createCanvas(400,400);
+  background(0);
+  fill(255);
+}
+
+function draw() {
+  ellipse(x, 200, 30, 30);
+  xpos++;
+}
+```]
+
+--
+name: animate
+<div class="sketch" id="ex_animate"></div>
+
+---
+## Draw
+.code[
+```javascript
+let xpos = 0;
+
+function setup() {
+  createCanvas(400,400);
+  background(0);
+  fill(255);
+}
+
+function draw() {
+  background(0);
+  ellipse(xpos, 200, 30, 30);
+  xpos = (xpos + 1) % width;
+}
+```]
+
+--
+name: animate2
+<div class="sketch" id="ex_animate2"></div>
+
+---
+## Random
+.code[
+```javascript
+let xpos, ypos;
+
+function setup() {
+  createCanvas(400,400);
+  background(0);
+  fill(255);
+
+  xpos = Math.random() * width;
+  ypos = Math.random() * height;
+}
+
+function draw() {
+  background(0);
+  ellipse(xpos, ypos, 30, 30);
+}
+```]
+--
+name: random
+<div class="sketch" id="ex_random"></div>
+
+---
+## Random
+.code[
+```javascript
+const pnts = [];
+const n = 20;
+
+function setup() {
+  createCanvas(400,400);
+  background(0);
+  fill(255);
+
+  for (let i = 0; i < n; i++) {
+    const x = Math.random() * width;
+    const y = Math.random() * height;
+    pnts.push([x, y]);
+  }
+};
+
+function draw {
+  background(0);
+  for (let i = 0; i < n; i++) {
+    ellipse(pnts[i][0], pnts[i][1], 30, 30);
+  }
+};
+```]
+
+--
+name: random2
+<div class="sketch" id="ex_random2"></div>
+
+---
+## Random
+.code[
+```javascript
+const pnts = [];
+const n = 200;
+
+function setup() {
+  createCanvas(400,400);
+  background(0);
+  fill(255);
+
+  for (let i = 0; i < n; i++) {
+    const x = Math.random() * width;
+    const y = Math.random() * height;
+    const d = Math.random() * 30;
+    pnts.push({x, y, d});
+  }
+};
+
+function draw {
+  background(0);
+  for (let i = 0; i < n; i++) {
+    ellipse(pnts[i].x, pnts[i].y, pnts[i].d, pnts[i].d);
+  }
+};
+```]
+
+--
+name: random3
+<div class="sketch" id="ex_random3"></div>
+
+---
 ---
 ### random() mange
 ---
@@ -98,10 +283,7 @@ background-image: url(resources/byrne2.jpg)
 ## Takk for meg!
 
     </textarea>
-    <script src="remark-latest.min.js">
-    </script>
-    <script>
-      var slideshow = remark.create();
-    </script>
+    <script src="remark-latest.min.js"></script>
+    <script src="sketches.js"></script>
   </body>
 </html>
