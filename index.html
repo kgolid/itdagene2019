@@ -14,7 +14,7 @@
       @import url(https://fonts.googleapis.com/css?family=Tajawal:400,700,800&display=swap);
 
       * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font-family: 'Tajawal'; color: #1a1a1a;}
+      body { font-family: 'Tajawal'; }
       a {color:inherit;}
       h1, h2, h3 {
         font-weight: 800;
@@ -29,6 +29,7 @@
         box-shadow:rgba(0,0,0,0.2) 0px 0px 15px -1px;
       }
 
+      .defaultslide {color: #1a1a1a}
       .codeslide {color: #fff}
       .sketch { display:inline-block; margin: 20px 0 0 30px;}
       .sketch canvas { border-radius: 10px; }
@@ -50,9 +51,10 @@
     <textarea id="source">
 
 layout: true
+name: defaultlayout
 
 background-color: #f1f1f1
-class: center, middle
+class: center, middle, defaultslide
 background-size: cover
 
 ---
@@ -68,7 +70,7 @@ background-image: url(resources/axi.jpg)
 ## Hva?
 
 ---
-background-image: url(resources/hedgehog.jpeg)
+background-image: url(resources/sketch2.jpeg)
 
 .content[
   ### Hva er kreativ programmering?
@@ -97,6 +99,7 @@ background-image: url(resources/byrne2.jpg)
 ### p5.js
 ---
 layout: true
+name: codelayout
 
 background-color: #2d2d2d
 class: center, middle, codeslide
@@ -182,6 +185,24 @@ function draw() {
 --
 name: animate2
 <div class="sketch" id="ex_animate2"></div>
+
+---
+layout: true
+template: defaultlayout
+
+---
+background-image: url(resources/hedgehog.jpeg)
+
+.content[
+  ### Bruke Tilfeldighet
+]
+---
+### PRNG
+Math.random();
+
+---
+layout: true
+template: codelayout
 
 ---
 ## Random
