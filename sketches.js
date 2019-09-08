@@ -166,6 +166,7 @@ slideshow.on('showSlide', function(slide) {
           const o = p.random(255);
           pnts.push({ x, y, d, o });
         }
+        p.draw();
       }
     };
 
@@ -203,6 +204,7 @@ slideshow.on('showSlide', function(slide) {
           const o = p.noise(x / 50, y / 50) * 255;
           pnts.push({ x, y, d, o });
         }
+        p.draw();
       }
     };
 
