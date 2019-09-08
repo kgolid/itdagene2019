@@ -164,7 +164,7 @@ slideshow.on('showSlide', function(slide) {
         for (let i = 0; i < 200; i++) {
           const x = Math.random() * p.width;
           const y = Math.random() * p.height;
-          const d = Math.random() * 30;
+          const d = p.random(5, 30);
           pnts.push({ x, y, d });
         }
       }

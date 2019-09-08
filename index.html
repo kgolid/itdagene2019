@@ -28,6 +28,7 @@
         background-color: rgba(240,240,240);
         box-shadow:rgba(0,0,0,0.2) 0px 0px 15px -1px;
       }
+      .cover { position:relative; top: -100px; }
 
       .defaultslide {color: #1a1a1a}
       .codeslide {color: #fff}
@@ -44,7 +45,15 @@
         border-radius: 10px;
       }
 
-      .cover { position:relative; top: -100px; }
+      .list {text-align: left; font-size: 1.5em;}
+      .snd { color: #f50; }
+
+      .image {display: inline-block; width:250px;}
+      .image img {width:100%;}
+
+      .image.fullsize {width: 800px; }
+      .image.portrait {width: 400px; }
+
     </style>
   </head>
   <body>
@@ -81,21 +90,56 @@ background-image: url(resources/sketch2.jpeg)
 - Man prøver ikke å løse et problem, koden eksisterer i kraft av seg selv
 
 ---
-background-image: url(resources/byrne2.jpg)
+background-image: url(resources/byrne1.jpg)
 
 .content[
   ### Hva er generativ kunst?
 ]
 
 ???
+- Metodikk for å gi fra seg kontroll.
 - Når du lar et autonomt system ta deler av beslutningene.
-- I vårt tilfelle bruker vi en RNG til å ta avgjørelser for oss.
+- Kan være maskinlæring
+- I vårt tilfelle bruker vi en PRNG til å ta avgjørelser for oss.
+- Kommer tilbake til hva dette betyr.
 
 ---
-
 ## Hvordan?
+.image[![](resources/external/dave1.gif)]
 
 ---
+background-image: url(resources/apparatus.png)
+
+.content.list[
+  Processing .snd[(Java)]
+
+  Processing.py .snd[(Python)]
+
+  P5.js .snd[(Javascript)]
+
+  Quil .snd[(Clojurescript)]
+
+  OpenFrameworks .snd[(C++)]
+
+  vvvv .snd[(gui-basert)]
+
+  Cinder .snd[(C++)]
+
+  three.js .snd[(Javascript)]
+
+  paper.js .snd[(Javascript)]
+]
+
+???
+- Processing, mitt første møte med kreativ kode, kode i det hele tatt.
+- Finnes varianter for Python, JS og Clojurescript.
+- OpenFrameworks veldig populært.
+- Cinder ble brukt for å lage visualiseringene i Windows Media Player (enough said)
+- three.js lar deg enkelt jobbe med 3D i browseren.
+- paper.js alternativ til p5.js
+- Mange alternativer for mange språk.
+
+
 ### p5.js
 ---
 layout: true
@@ -196,11 +240,33 @@ background-image: url(resources/hedgehog.jpeg)
 .content[
   ### Bruke Tilfeldighet
 ]
+???
+- Finnes mange alternativer, velger å vise p5 sine implementasjoner.
 ---
-### PRNG
-Math.random();
+### random()
+```javascript
+  random(); // Tilfeldig flyttall mellom 0 og 1.
+  random(12); // Tilfeldig flyttall mellom 0 og 12.
+  random(3, 17); // Tilfeldig flyttall mellom 3 og 17. 
+```
 
 ---
+### randomGaussian()
+```javascript
+  // Tilfeldig flyttall fra en normalfordelt samling med 
+  randomGaussian(160, 10); 
+```
+
+---
+### noise()
+```javascript
+  noise(x,y); // Tilfeldig flyttall mellom 0 og 1.
+  random(12); // Tilfeldig flyttall mellom 0 og 12.
+  random(3, 17); // Tilfeldig flyttall mellom 3 og 17. 
+```
+
+---
+
 layout: true
 template: codelayout
 
@@ -215,8 +281,8 @@ function setup() {
   background(0);
   fill(255);
 
-  xpos = Math.random() * width;
-  ypos = Math.random() * height;
+  xpos = random(width);
+  ypos = random(height);
 }
 
 function draw() {
@@ -241,8 +307,8 @@ function setup() {
   fill(255);
 
   for (let i = 0; i < n; i++) {
-    const x = Math.random() * width;
-    const y = Math.random() * height;
+    const x = random(width);
+    const y = random(height);
     pnts.push([x, y]);
   }
 };
@@ -272,9 +338,9 @@ function setup() {
   fill(255);
 
   for (let i = 0; i < n; i++) {
-    const x = Math.random() * width;
-    const y = Math.random() * height;
-    const d = Math.random() * 30;
+    const x = random(width);
+    const y = random(height);
+    const d = random(5,30);
     pnts.push({x, y, d});
   }
 };
@@ -292,13 +358,95 @@ name: random3
 <div class="sketch" id="ex_random3"></div>
 
 ---
+layout: true
+template: defaultlayout
+
 ---
-### random() mange
+background-image: url(resources/studio-apts.jpeg)
+
+.content[
+## Teknikker]
+
+---
+background-image: url(resources/lindenmayer.jpg)
+
+.content[
+### Lindenmayer
+]
+---
+.image.fullsize[![](resources/guide/lind1.png)]
+---
+.image.fullsize[![](resources/guide/lind2.png)]
+---
+.image.fullsize[![](resources/guide/lind3.png)]
+---
+.image.fullsize[![](resources/guide/lind4b.png)]
+---
+background-color: #d9e2e9
+.image[
+![](resources/lindenmayer/lind1.jpeg)
+FF[+F][--FF][-F+F]
+]
+.image[
+![](resources/lindenmayer/lind2.jpeg)
+F[++F[-F]]F[-FF[F]]
+]
+.image[
+![](resources/lindenmayer/lind3.jpeg)
+F[-FF[+F]]F[+F[+F]]
+]
+.image[
+![](resources/lindenmayer/lind4.jpeg)
+F[-F[-F++F]][+F[--F]]F
+]
 ---
 
+background-image: url(resources/flow1.jpg)
 
+.content[
+### Flow Fields
+]
+---
+background-image: url(resources/cubefield.jpeg)
+
+.content[
+### Cellular Automata
+]
+---
+.image.portrait[![](resources/guide/cell1.jpg)]
+---
+.image.fullsize[![](resources/guide/cell2.jpg)]
+---
+.image.fullsize[![](resources/automatons.jpg)]
+---
+.image.portrait[![](resources/guide/cell3.jpg)]
+---
+
+background-image: url(resources/landfall1.jpg)
+
+.content[
 ## Hvorfor?
+]
+---
+.content[
+### Nye problemstillinger
+]
 
+???
+- Kommer over andre problemstillinger enn de man ofte ser i jobb/skole-sammenheng.
+- Tar ofte utgangspunkt i rare, esoteriske algoritmer.
+- Morsomt måte å lære seg nye språk.
+
+---
+.content[
+### Hva skjer hvis...
+]
+---
+.content[
+### Stort og engasjert miljø
+]
+---
+### Muppets
 ---
 
 ## Takk for meg!
