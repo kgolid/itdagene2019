@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Kreativ Kode</title>
+    <title>IT-dagene 2019</title>
     <meta charset="utf-8">
     <script src="p5.min.js"></script>
     <script src="p5.dom.js"></script>
@@ -53,6 +53,7 @@
       .image img {width:100%;}
 
       .image.fullsize {width: 800px; }
+      .image.square { width: 600px; }
       .image.portrait {width: 400px;}
 
     </style>
@@ -79,6 +80,9 @@ background-image: url(resources/axi.jpg)
 - Hei
 - Jeg heter Kjetil Golid, og jobber i Bekk Trondheim.
 - Skal snakke om favoritthobbyen min, som er kreativ programmering.
+---
+background-image: url(resources/kjetil.jpg)
+background-size: contain
 ---
 background-image: url(resources/sketch2.jpeg)
 
@@ -107,6 +111,7 @@ background-image: url(resources/byrne1.jpg)
 ## Inspirasjon
 ---
 background-image: url(resources/external/tylerhobbs.jpg)
+background-size: contain
 .content[
 ### Tyler Hobbs
 .snd[tylerxhobbs.com]]
@@ -117,6 +122,7 @@ background-image: url(resources/external/tylerhobbs.jpg)
 - Maleri-estetikk.
 ---
 background-image: url(resources/external/mattdesl.jpg)
+background-size: contain
 .content[
 ### Matt Deslauriers
 .snd[mattdesl.com]]
@@ -128,6 +134,7 @@ background-image: url(resources/external/mattdesl.jpg)
 
 ---
 background-image: url(resources/external/inconvergent.jpg)
+background-size: contain
 .content[
 ### Anders Hoff
 .snd[inconvergent.net]]
@@ -299,14 +306,16 @@ background-image: url(resources/noise.png)
 .content[
 ### noise()]
 ```javascript
-  noise(x); // Tilfeldig flyttall mellom 0 og 1.
-  noise(x,y); // Tilfeldig flyttall mellom 0 og 1.
-  noise(x,y,z); // Tilfeldig flyttall mellom 0 og 1.
+  noise(3); // Noise-verdi fra posisjon (3)
+  noise(10,2); // Noise-verdi fra posisjon (10,2)
+  noise(4,11,0); // Noise-verdi fra posisjon (4,11,0)
 ```
 
 ???
 - Noise er tilfeldighet som tar input.
 - Inputen forteller hvor det tilfeldige tallet skal hentes fra.
+- Forskjellen i resultat ved to gjentatte kall nærmer seg 0 når forskjellen i input nærmer seg 0.
+- Resultatet er alltid mellom 0 og 1.
 ---
 
 layout: true
@@ -331,6 +340,10 @@ function draw() {
 * ellipse(xpos, ypos, 30, 30);
 }
 ```]
+
+???
+- Lar posisjonen være tilfeldig.
+- Legg merke til at vi har flyttet assignmenten inn i setup.
 --
 name: random
 <div class="sketch" id="ex_random"></div>
@@ -360,6 +373,9 @@ function draw {
 * }
 };
 ```]
+
+???
+- Itererer over flere partikler
 
 --
 name: random2
@@ -394,6 +410,9 @@ function draw {
 };
 ```]
 
+???
+- Lar flere egenskaper bli tilfeldig valgt.
+
 --
 name: random3
 <div class="sketch" id="ex_random3"></div>
@@ -411,7 +430,7 @@ function setup() {
   for (let i = 0; i < n; i++) {
     const x = random(width);
     const y = random(height);
-*   const d = noise(x/50, y/50) * 50;
+*   const d = noise(x/50, y/50) * 30;
 *   const o = noise(x/50, y/50) * 255;
     pnts.push({x, y, d, o});
   }
@@ -427,6 +446,9 @@ function draw {
 };
 ```]
 
+???
+- Noise gjør at elementer i nærheten av hverandre får like egenskaper.
+- Legg merke til at vi deler på 50. Dette kommer vi tilbake til.
 --
 name: random4
 <div class="sketch" id="ex_random4"></div>
@@ -474,28 +496,86 @@ F[-FF[+F]]F[+F[+F]]
 F[-F[-F++F]][+F[--F]]F
 ]
 ---
-
+.image[![](resources/guide/turtle.png)]
+---
+background-image: url(resources/frac.jpg)
+background-size: contain
+---
+background-image: url(resources/squares.png)
+---
 background-image: url(resources/flow1.jpg)
 
 .content[
-### Flow Fields
+### Particle Flow Fields
 ]
 ---
-background-image: url(resources/cubefield.jpeg)
+.image.fullsize[![](resources/guide/flow0.jpg)]
+---
+.image.fullsize[![](resources/guide/flow1.png)]
+---
+.image.fullsize[![](resources/guide/flow2.png)]
+---
+.image.fullsize[![](resources/guide/flow2b.jpg)]
+---
+.image.fullsize[![](resources/guide/flow3.png)]
+---
 
+.image.square[![](resources/flow/flow0.jpg)]
+---
+.image.square[![](resources/flow/flow1.jpg)]
+---
+.image.square[![](resources/flow/flow2.jpg)]
+---
+.image.square[![](resources/flow/flow3.jpeg)]
+---
+.image.square[![](resources/flow/flow4.jpeg)]
+---
+
+background-image: url(resources/cubefield.jpeg)
 .content[
-### Cellular Automata
-]
+### Cellular Automata]
 ---
 .image.portrait[![](resources/guide/cell1.jpg)]
 ---
 .image.fullsize[![](resources/guide/cell2.jpg)]
+---
+.image.portrait[![](resources/guide/cell2b.jpg)]
 ---
 .image.fullsize[![](resources/automatons.jpg)]
 ---
 .image.portrait[![](resources/guide/cell3b.jpg)]
 ---
 
+.image.square[![](resources/cellular/cell1.jpeg)]
+---
+.image.square[![](resources/cellular/cell2.jpeg)]
+---
+.image.square[![](resources/cellular/cell3.jpeg)]
+---
+.image.square[![](resources/cellular/cell4.jpeg)]
+---
+.image.square[![](resources/cellular/cell4b.jpeg)]
+---
+.image.square[![](resources/cellular/cell4c.jpeg)]
+---
+.image.square[![](resources/cellular/cell4d.jpeg)]
+---
+.image.square[![](resources/cellular/cell4e.jpeg)]
+---
+.image.square[![](resources/cellular/cell5a.jpeg)]
+---
+.image.square[![](resources/cellular/cell5b.jpeg)]
+---
+.image.square[![](resources/cellular/cell5c.jpeg)]
+---
+.image.square[![](resources/cellular/cell6a.jpeg)]
+---
+.image.square[![](resources/cellular/cell6b.jpeg)]
+---
+.image.square[![](resources/cellular/cell6c.jpeg)]
+---
+background-image: url(resources/summary.jpg)
+---
 background-image: url(resources/landfall1.jpg)
 
 .content[
@@ -513,18 +593,33 @@ background-image: url(resources/landfall1.jpg)
 
 ---
 .content[
-### Hva skjer hvis...
-]
----
-.content[
 ### Stort og engasjert miljø
 ]
 ---
-### Muppets
+background-image: url(resources/muppets.jpg)
+background-size: contain
 ---
+background-image: url(resources/sketch3.jpeg)
 
+.content[
+Tyler Hobbs - .snd[tylerxhobbs.com]
+
+Matt Deslauriers - .snd[www.mattdesl.com]
+
+Anders Hoff - .snd[inconvergent.net]
+
+Frederik Vanhoutte - .snd[www.wblut.com]
+
+Benjamin Kovach - .snd[www.kovach.me]
+
+Manolo Naon - .snd[manoloide.com]]
+--
+<br/>
+<br/>
+<br/>
+.content[
 ## Takk for meg!
-
+@kgolid - .snd[generated.space]]
     </textarea>
     <script src="remark-latest.min.js"></script>
     <script src="sketches.js"></script>
