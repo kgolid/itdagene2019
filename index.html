@@ -3,8 +3,8 @@
   <head>
     <title>Kreativ Kode</title>
     <meta charset="utf-8">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.js"></script>
+    <script src="p5.min.js"></script>
+    <script src="p5.dom.js"></script>
     <style>
       @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
       @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
@@ -14,13 +14,14 @@
       @import url(https://fonts.googleapis.com/css?family=Tajawal:400,700,800&display=swap);
 
       * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font-family: 'Tajawal'; }
+      body { font-family: 'Tajawal', Helvetica, Arial, sans-serif; }
       a {color:inherit;}
       h1, h2, h3 {
         font-weight: 800;
         text-transform:uppercase;
       }
       .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-code-line-highlighted {background-color: #060}
 
       .content {
         display: inline-block;
@@ -52,7 +53,7 @@
       .image img {width:100%;}
 
       .image.fullsize {width: 800px; }
-      .image.portrait {width: 400px; }
+      .image.portrait {width: 400px;}
 
     </style>
   </head>
@@ -71,30 +72,30 @@ background-image: url(resources/axi.jpg)
 
 .content.cover[
   # Kunst med kode
-  Intro til kreativ programmering
+  Intro til Kreativ Programmering
 ]
 
----
-
-## Hva?
-
+???
+- Hei
+- Jeg heter Kjetil Golid, og jobber i Bekk Trondheim.
+- Skal snakke om favoritthobbyen min, som er kreativ programmering.
 ---
 background-image: url(resources/sketch2.jpeg)
 
 .content[
-  ### Hva er kreativ programmering?
-]
+  ### Hva er kreativ programmering?]
 
 ???
 - Skriver kode for å skape et utrykk heller enn å skape funksjonalitet.
-- Man prøver ikke å løse et problem, koden eksisterer i kraft av seg selv
+- Man prøver ikke å løse et problem, koden eksisterer i kraft av seg selv.
+- Uttrykket kan komme gjennom stillbilder, animasjoner, lyd, interaksjon.
+- Kommer først og fremst til å snakke om stillbilder.
 
 ---
 background-image: url(resources/byrne1.jpg)
 
 .content[
-  ### Hva er generativ kunst?
-]
+  ### Hva er generativ kunst?]
 
 ???
 - Metodikk for å gi fra seg kontroll.
@@ -102,10 +103,42 @@ background-image: url(resources/byrne1.jpg)
 - Kan være maskinlæring
 - I vårt tilfelle bruker vi en PRNG til å ta avgjørelser for oss.
 - Kommer tilbake til hva dette betyr.
+---
+## Inspirasjon
+---
+background-image: url(resources/external/tylerhobbs.jpg)
+.content[
+### Tyler Hobbs
+.snd[tylerxhobbs.com]]
+
+???
+- Fra Texas
+- Jobber fulltid som generativ kunstner.
+- Maleri-estetikk.
+---
+background-image: url(resources/external/mattdesl.jpg)
+.content[
+### Matt Deslauriers
+.snd[mattdesl.com]]
+
+???
+- Fra Toronto i Canada
+- Holder mange workshops og tutorials på nett.
+- Veldig variert arbeid
 
 ---
+background-image: url(resources/external/inconvergent.jpg)
+.content[
+### Anders Hoff
+.snd[inconvergent.net]]
+
+???
+- Fra Oslo
+- Unik stil
+
+---
+
 ## Hvordan?
-.image[![](resources/external/dave1.gif)]
 
 ---
 background-image: url(resources/apparatus.png)
@@ -139,8 +172,20 @@ background-image: url(resources/apparatus.png)
 - paper.js alternativ til p5.js
 - Mange alternativer for mange språk.
 
+---
 
 ### p5.js
+
+???
+- Laget under samme ide som Processing... 
+- ...for å gjøre programmering mer tilgjengelig for designere og kunstnere.
+- Bruker canvas-elementet i browseren.
+---
+
+background-image: url(resources/p5screenshot.png)
+
+???
+Vi kommer til å se på p5 i dag.
 ---
 layout: true
 name: codelayout
@@ -189,7 +234,7 @@ name: draw
 ## Draw
 .code[
 ```javascript
-let xpos = 0;
+*let xpos = 0;
 
 function setup() {
   createCanvas(400,400);
@@ -198,8 +243,8 @@ function setup() {
 }
 
 function draw() {
-  ellipse(x, 200, 30, 30);
-  xpos++;
+* ellipse(xpos, 200, 30, 30);
+* xpos++;
 }
 ```]
 
@@ -215,14 +260,13 @@ let xpos = 0;
 
 function setup() {
   createCanvas(400,400);
-  background(0);
   fill(255);
 }
 
 function draw() {
-  background(0);
+* background(0);
   ellipse(xpos, 200, 30, 30);
-  xpos = (xpos + 1) % width;
+* xpos = (xpos + 1) % width;
 }
 ```]
 
@@ -251,20 +295,18 @@ background-image: url(resources/hedgehog.jpeg)
 ```
 
 ---
-### randomGaussian()
+background-image: url(resources/noise.png)
+.content[
+### noise()]
 ```javascript
-  // Tilfeldig flyttall fra en normalfordelt samling med 
-  randomGaussian(160, 10); 
-```
-
----
-### noise()
-```javascript
+  noise(x); // Tilfeldig flyttall mellom 0 og 1.
   noise(x,y); // Tilfeldig flyttall mellom 0 og 1.
-  random(12); // Tilfeldig flyttall mellom 0 og 12.
-  random(3, 17); // Tilfeldig flyttall mellom 3 og 17. 
+  noise(x,y,z); // Tilfeldig flyttall mellom 0 og 1.
 ```
 
+???
+- Noise er tilfeldighet som tar input.
+- Inputen forteller hvor det tilfeldige tallet skal hentes fra.
 ---
 
 layout: true
@@ -274,20 +316,19 @@ template: codelayout
 ## Random
 .code[
 ```javascript
-let xpos, ypos;
+*let xpos, ypos;
 
 function setup() {
   createCanvas(400,400);
-  background(0);
   fill(255);
 
-  xpos = random(width);
-  ypos = random(height);
+* xpos = random(width);
+* ypos = random(height);
 }
 
 function draw() {
   background(0);
-  ellipse(xpos, ypos, 30, 30);
+* ellipse(xpos, ypos, 30, 30);
 }
 ```]
 --
@@ -298,26 +339,25 @@ name: random
 ## Random
 .code[
 ```javascript
-const pnts = [];
-const n = 20;
+*const pnts = [];
+*const n = 20;
 
 function setup() {
   createCanvas(400,400);
-  background(0);
   fill(255);
 
-  for (let i = 0; i < n; i++) {
-    const x = random(width);
-    const y = random(height);
-    pnts.push([x, y]);
-  }
+* for (let i = 0; i < n; i++) {
+*   const x = random(width);
+*   const y = random(height);
+*   pnts.push({x, y});
+* }
 };
 
 function draw {
   background(0);
-  for (let i = 0; i < n; i++) {
-    ellipse(pnts[i][0], pnts[i][1], 30, 30);
-  }
+* for (let i = 0; i < n; i++) {
+*   ellipse(pnts[i].x, pnts[i].y, 30, 30);
+* }
 };
 ```]
 
@@ -326,29 +366,30 @@ name: random2
 <div class="sketch" id="ex_random2"></div>
 
 ---
-## Random
+## More Random
 .code[
 ```javascript
 const pnts = [];
-const n = 200;
+*const n = 500;
 
 function setup() {
   createCanvas(400,400);
-  background(0);
-  fill(255);
 
   for (let i = 0; i < n; i++) {
     const x = random(width);
     const y = random(height);
-    const d = random(5,30);
-    pnts.push({x, y, d});
+*   const d = random(5,30);
+*   const o = random(255);
+*   pnts.push({x, y, d, o});
   }
 };
 
 function draw {
   background(0);
   for (let i = 0; i < n; i++) {
-    ellipse(pnts[i].x, pnts[i].y, pnts[i].d, pnts[i].d);
+*   const pnt = pnts[i];
+*   fill(255, pnt.o)
+*   ellipse(pnt.x, pnt.y, pnt.d, pnt.d);
   }
 };
 ```]
@@ -356,6 +397,39 @@ function draw {
 --
 name: random3
 <div class="sketch" id="ex_random3"></div>
+
+---
+## Noise
+.code[
+```javascript
+const pnts = [];
+const n = 500;
+
+function setup() {
+  createCanvas(400,400);
+
+  for (let i = 0; i < n; i++) {
+    const x = random(width);
+    const y = random(height);
+*   const d = noise(x/50, y/50) * 50;
+*   const o = noise(x/50, y/50) * 255;
+    pnts.push({x, y, d, o});
+  }
+};
+
+function draw {
+  background(0);
+  for (let i = 0; i < n; i++) {
+    const pnt = pnts[i];
+    fill(255, pnt.o)
+    ellipse(pnt.x, pnt.y, pnt.d, pnt.d);
+  }
+};
+```]
+
+--
+name: random4
+<div class="sketch" id="ex_random4"></div>
 
 ---
 layout: true
@@ -419,7 +493,7 @@ background-image: url(resources/cubefield.jpeg)
 ---
 .image.fullsize[![](resources/automatons.jpg)]
 ---
-.image.portrait[![](resources/guide/cell3.jpg)]
+.image.portrait[![](resources/guide/cell3b.jpg)]
 ---
 
 background-image: url(resources/landfall1.jpg)

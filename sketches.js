@@ -63,7 +63,6 @@ slideshow.on('showSlide', function(slide) {
       p.setup = function() {
         let cnv = p.createCanvas(dim, dim);
         cnv.parent('ex_' + n);
-        p.background(0);
         p.noStroke();
       };
 
@@ -84,7 +83,6 @@ slideshow.on('showSlide', function(slide) {
         let cnv = p.createCanvas(dim, dim);
         cnv.parent('ex_' + n);
         cnv.mousePressed(reset);
-        p.background(0);
         p.noStroke();
 
         reset();
@@ -112,7 +110,6 @@ slideshow.on('showSlide', function(slide) {
         let cnv = p.createCanvas(dim, dim);
         cnv.parent('ex_' + n);
         cnv.mousePressed(reset);
-        p.background(0);
         p.noStroke();
 
         reset();
@@ -146,26 +143,65 @@ slideshow.on('showSlide', function(slide) {
         let cnv = p.createCanvas(dim, dim);
         cnv.parent('ex_' + n);
         cnv.mousePressed(reset);
-        p.background(0);
         p.noStroke();
+        p.noLoop();
 
         reset();
       };
 
       p.draw = function() {
         p.background(0);
-        for (let i = 0; i < 200; i++) {
+        for (let i = 0; i < 500; i++) {
+          p.fill(255, pnts[i].o);
           p.ellipse(pnts[i].x, pnts[i].y, pnts[i].d, pnts[i].d);
         }
       };
 
       function reset() {
         pnts = [];
-        for (let i = 0; i < 200; i++) {
+        for (let i = 0; i < 500; i++) {
           const x = Math.random() * p.width;
           const y = Math.random() * p.height;
           const d = p.random(5, 30);
-          pnts.push({ x, y, d });
+          const o = p.random(255);
+          pnts.push({ x, y, d, o });
+        }
+      }
+    };
+
+    new p5(sketch);
+  } else if (n === 'random4') {
+    // ----- RANDOM 4
+
+    let sketch = function(p) {
+      let pnts;
+
+      p.setup = function() {
+        let cnv = p.createCanvas(dim, dim);
+        cnv.parent('ex_' + n);
+        cnv.mousePressed(reset);
+        p.noStroke();
+        p.noLoop();
+
+        reset();
+      };
+
+      p.draw = function() {
+        p.background(0);
+        for (let i = 0; i < 500; i++) {
+          p.fill(255, pnts[i].o);
+          p.ellipse(pnts[i].x, pnts[i].y, pnts[i].d, pnts[i].d);
+        }
+      };
+
+      function reset() {
+        pnts = [];
+        for (let i = 0; i < 500; i++) {
+          const x = Math.random() * p.width;
+          const y = Math.random() * p.height;
+          const d = p.noise(x / 50, y / 50) * 30;
+          const o = p.noise(x / 50, y / 50) * 255;
+          pnts.push({ x, y, d, o });
         }
       }
     };
