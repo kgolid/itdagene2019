@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>IT-dagene 2019</title>
+    <meta charset="utf-8">
+    <script src="p5.min.js"></script>
+    <script src="p5.dom.js"></script>
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Tajawal:400,700,800&display=swap);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Roboto:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font-family: 'Tajawal', Helvetica, Arial, sans-serif; }
+      a {color:inherit;}
+      h1, h2, h3 {
+        font-weight: 800;
+        text-transform:uppercase;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-code-line-highlighted {background-color: #060}
+
+      .content {
+        display: inline-block;
+        padding: 30px 50px 20px 50px;
+        background-color: rgba(240,240,240);
+        box-shadow:rgba(0,0,0,0.2) 0px 0px 15px -1px;
+      }
+      .cover { position:relative; top: -100px; }
+
+      .defaultslide {color: #1a1a1a}
+      .codeslide {color: #fff}
+      .sketch { display:inline-block; margin: 20px 0 0 30px;}
+      .sketch canvas { border-radius: 10px; }
+      .code {
+        display:inline-block;
+        text-align: left;
+        vertical-align: top;
+        min-height: 400px;
+        margin-top: 20px;
+        padding:20px;
+        border: 1px solid #fff;
+        border-radius: 10px;
+      }
+
+      .list {text-align: left; font-size: 1.5em;}
+      .snd { color: #f50; }
+
+      .image {display: inline-block; width:250px;}
+      .image img {width:100%;}
+
+      .image.fullsize {width: 800px; }
+      .image.square { width: 600px; }
+      .image.portrait {width: 400px;}
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+layout: true
+name: defaultlayout
+
+background-color: #f1f1f1
+class: center, middle, defaultslide
+background-size: cover
+
+---
+background-image: url(resources/flow/flow2.jpg)
+
+.content.cover[
+  # Kreativ Funksjonell Kode
+  Intro til Kreativ Programmering
+]
+
+---
+background-image: url(resources/sketch2.jpeg)
+
+.content[
+  ### Hva er kreativ programmering?]
+
+???
+- Skriver kode for å skape et utrykk heller enn å skape funksjonalitet.
+- Man prøver ikke å løse et problem, koden eksisterer i kraft av seg selv.
+- Uttrykket kan komme gjennom stillbilder, animasjoner, lyd, interaksjon.
+- Kommer først og fremst til å snakke om stillbilder.
+
+---
+background-image: url(resources/byrne1.jpg)
+
+.content[
+  ### Hva er generativ kunst?]
+
+???
+- Metodikk for å gi fra seg kontroll.
+- Når du lar et autonomt system ta deler av beslutningene.
+- Kan være maskinlæring
+- I vårt tilfelle bruker vi en PRNG til å ta avgjørelser for oss.
+- Kommer tilbake til hva dette betyr.
+---
+## Inspirasjon
+---
+background-image: url(resources/external/tylerhobbs.jpg)
+background-size: contain
+.content[
+### Tyler Hobbs
+.snd[tylerxhobbs.com]]
+
+???
+- Fra Texas
+- Jobber fulltid som generativ kunstner.
+- Maleri-estetikk.
+---
+background-image: url(resources/external/mattdesl.jpg)
+background-size: contain
+.content[
+### Matt Deslauriers
+.snd[mattdesl.com]]
+
+???
+- Fra Toronto i Canada
+- Holder mange workshops og tutorials på nett.
+- Veldig variert arbeid
+
+---
+background-image: url(resources/external/inconvergent.jpg)
+background-size: contain
+.content[
+### Anders Hoff
+.snd[inconvergent.net]]
+
+???
+- Fra Oslo
+- Unik stil
+
+---
+
+## Hvordan?
+
+---
+background-image: url(resources/apparatus.png)
+
+.content.list[
+  Processing .snd[(Java)]
+
+  Processing.py .snd[(Python)]
+
+  P5.js .snd[(Javascript)]
+
+  Quil .snd[(Clojurescript)]
+
+  OpenFrameworks .snd[(C++)]
+
+  vvvv .snd[(gui-basert)]
+
+  Cinder .snd[(C++)]
+
+  three.js .snd[(Javascript)]
+
+  paper.js .snd[(Javascript)]
+]
+
+???
+- Processing, mitt første møte med kreativ kode, kode i det hele tatt.
+- Finnes varianter for Python, JS og Clojurescript.
+- OpenFrameworks veldig populært.
+- Cinder ble brukt for å lage visualiseringene i Windows Media Player (enough said)
+- three.js lar deg enkelt jobbe med 3D i browseren.
+- paper.js alternativ til p5.js
+- Mange alternativer for mange språk.
+
+---
+layout: true
+template: defaultlayout
+
+---
+background-image: url(resources/studio-apts.jpeg)
+
+.content[
+## Teknikker]
+
+???
+- Gå over til å se på litt teknikker for generativ kunst.
+---
+background-image: url(resources/lindenmayer.jpg)
+
+.content[
+### Lindenmayer-systemer]
+
+???
+- Aristid lindenmayer
+- Biolog
+- Utviklet et språk på 60-tallet for å modellere planters oppførsel.
+---
+.image.fullsize[![](resources/guide/lind1.png)]
+
+???
+- Kanskje vært borti regulære språk?
+- Dette er en avart.
+- Består av et aksiom og en regel.
+- Appliserer regelen først på aksiomet, deretter på resultatet.
+---
+.image.fullsize[![](resources/guide/lind2.png)]
+???
+- Resultatet etter 4 steg.
+- Hvordan blir dette til noe visuelt som modellerer planter?
+---
+.image.fullsize[![](resources/guide/lind3.png)]
+???
+- Turtle-graphics!
+- Opprinnelig et konsept fra LOGO.
+- Gir kommandoer om hvordan en skilpadde skal bevege seg på et lerett.
+---
+.image.fullsize[![](resources/guide/lind4b.png)]
+---
+background-color: #d9e2e9
+.image[
+![](resources/lindenmayer/lind1.jpeg)
+FF[+F][--FF][-F+F]
+]
+.image[
+![](resources/lindenmayer/lind2.jpeg)
+F[++F[-F]]F[-FF[F]]
+]
+.image[
+![](resources/lindenmayer/lind3.jpeg)
+F[-FF[+F]]F[+F[+F]]
+]
+.image[
+![](resources/lindenmayer/lind4.jpeg)
+F[-F[-F++F]][+F[--F]]F
+]
+---
+.image[![](resources/guide/turtle.png)]
+---
+background-image: url(resources/frac.jpg)
+background-size: contain
+---
+background-image: url(resources/squares.png)
+---
+background-image: url(resources/flow1.jpg)
+
+.content[
+### Particle Flow Fields
+]
+---
+.image.fullsize[![](resources/guide/flow0.jpg)]
+---
+.image.fullsize[![](resources/guide/flow1.png)]
+---
+.image.fullsize[![](resources/guide/flow2.png)]
+---
+.image.fullsize[![](resources/guide/flow2b.jpg)]
+---
+.image.fullsize[![](resources/guide/flow3.png)]
+---
+
+.image.square[![](resources/flow/flow0.jpg)]
+---
+.image.square[![](resources/flow/flow1.jpg)]
+---
+.image.square[![](resources/flow/flow2.jpg)]
+---
+.image.square[![](resources/flow/flow3.jpeg)]
+---
+## La oss se på clojurescript!
+    </textarea>
+    <script src="remark-latest.min.js"></script>
+    <script src="sketches.js"></script>
+  </body>
+</html>
