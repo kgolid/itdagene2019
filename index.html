@@ -213,10 +213,19 @@ function setup() {
 }
 ```]
 
+???
+- La oss se på litt kode.
+- P5 består først og fremst av to funksjoner.
+- Setup og Draw.
+- Setup kjører når du starter programmet.
+- Draw kjører hver frame (60 ganger i sekunder).
+- Trenger ikke draw.
+
+- Setup inneholder typisk generell info som bakgrunn, farger osv.
+- Definerer også elementene som skal brukes.
 --
 name: setup
 <div class="sketch" id="ex_setup"></div>
-
 ---
 ## Draw
 
@@ -233,6 +242,11 @@ function draw() {
 }
 ```]
 
+???
+- Kjører som sagt en gang hver frame.
+- Her tegner du elementene, oppdaterer en state.
+- Animasjon
+- Heller se bedre bruk av draw
 --
 name: draw
 <div class="sketch" id="ex_draw"></div>
@@ -255,9 +269,17 @@ function draw() {
 }
 ```]
 
+???
+- Her har vi lagt til en variabel, staten vår
+- Oppdaterer den i draw og bruker den for å bestemme sirkelens x-posisjon.
 --
 name: animate
 <div class="sketch" id="ex_animate"></div>
+
+???
+- Kanskje ikke resultatet man forventet.
+- Skjer fordi draw kun tegner det den blir bedt om å tegner
+- Skjer ingen implisitt sletting.
 
 ---
 ## Draw
@@ -277,10 +299,17 @@ function draw() {
 }
 ```]
 
+???
+- Tegne bakgrunnen på nytt ved hver frame.
+- Modulo.
+- Nytt keyword vi får fra P5. Sier oss hvor bred canvaset vårt er.
 --
 name: animate2
 <div class="sketch" id="ex_animate2"></div>
 
+???
+- Fortsatt ikke super-interessant.
+- La oss introdusere tilfeldighet.
 ---
 layout: true
 template: defaultlayout
@@ -305,6 +334,8 @@ background-image: url(resources/hedgehog.jpeg)
 background-image: url(resources/noise.png)
 .content[
 ### noise()]
+<br/>
+<br/>
 ```javascript
   noise(3); // Noise-verdi fra posisjon (3)
   noise(10,2); // Noise-verdi fra posisjon (10,2)
@@ -348,6 +379,9 @@ function draw() {
 name: random
 <div class="sketch" id="ex_random"></div>
 
+???
+- Resultatet vil bli annerledes hver gang denne koden kjøres.
+- Unikt, men kjedelig.
 ---
 ## Random
 .code[
@@ -448,6 +482,7 @@ function draw {
 
 ???
 - Noise gjør at elementer i nærheten av hverandre får like egenskaper.
+- Siden noise kun returnerer mellom 0 og 1 må vi gange opp resultatet.
 - Legg merke til at vi deler på 50. Dette kommer vi tilbake til.
 --
 name: random4
@@ -463,18 +498,37 @@ background-image: url(resources/studio-apts.jpeg)
 .content[
 ## Teknikker]
 
+???
+- Gå over til å se på litt teknikker for generativ kunst.
 ---
 background-image: url(resources/lindenmayer.jpg)
 
 .content[
-### Lindenmayer
-]
+### Lindenmayer-systemer]
+
+???
+- Aristid lindenmayer
+- Biolog
+- Utviklet et språk på 60-tallet for å modellere planters oppførsel.
 ---
 .image.fullsize[![](resources/guide/lind1.png)]
+
+???
+- Kanskje vært borti regulære språk?
+- Dette er en avart.
+- Består av et aksiom og en regel.
+- Appliserer regelen først på aksiomet, deretter på resultatet.
 ---
 .image.fullsize[![](resources/guide/lind2.png)]
+???
+- Resultatet etter 4 steg.
+- Hvordan blir dette til noe visuelt som modellerer planter?
 ---
 .image.fullsize[![](resources/guide/lind3.png)]
+???
+- Turtle-graphics!
+- Opprinnelig et konsept fra LOGO.
+- Gir kommandoer om hvordan en skilpadde skal bevege seg på et lerett.
 ---
 .image.fullsize[![](resources/guide/lind4b.png)]
 ---
